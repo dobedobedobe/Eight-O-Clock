@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Infinity Mirror</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+	<script src="sketch8.js"></script>
+
+	<style>
+		body {
+			margin:0 0;
+			padding:0 0;
+			overflow: hidden;
+			color: white;
+			background-color: black;
+		}
+		canvas {
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+</body>
+<footer>
+	<script type="text/javascript">
+		document.body.addEventListener("keydown", function (event) {
+			var location = window.location.protocol + "//" + window.location.hostname + ":" +window.location.port;
+		    if (event.which === 39) {
+		    	window.location.href = location + '/' + "slide9.html";
+		    }
+		    else if (event.which === 37) {
+		    	window.location.href = location + '/' + "slide7.html";
+		    }
+		});
+	</script>
+</footer>
+</html>

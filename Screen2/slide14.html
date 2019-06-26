@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>screen1.14</title>
+	<style type="text/css">
+		body {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+</body>
+<footer>
+	<script type="text/javascript">
+		document.body.addEventListener("keydown", function (event) {
+			var location = window.location.protocol + "//" + window.location.hostname + ":" +window.location.port;
+		    if (event.which === 39) {
+		    	window.location.href = location + '/' + "slide15.html";
+		    }
+		    else if (event.which === 37) {
+		    	window.location.href = location + '/' + "slide13.html";
+		    }
+		});
+	</script>
+</footer>
+</html>
