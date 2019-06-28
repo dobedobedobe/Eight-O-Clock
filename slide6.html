@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>screen1.14</title>
+
+	<style type="text/css">
+		body {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+
+		#div1 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: black;
+			width: 66.66%;
+			height: 100vh;
+			float: left;
+			display: inline;
+		}
+		
+		#div3 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: blue;
+			width: 33.33%;
+			height: 100vh;
+			float: left;
+			display: inline;
+		}	
+	
+		canvas {
+			display: inline;
+		}
+	</style>
+	<script type="text/javascript" src="libraries/p5.js"></script>
+	<script type="text/javascript" src="libraries/p5.dom.js"></script>
+	<script type="text/javascript" src="libraries/p5.sound.js"></script>
+	<script src="libraries/ml5.js"></script>
+</head>
+<body>
+	<div id="div1">
+		<p id="score" style="margin: 0; padding: 0; ;z-index: 20; color: white; font-size: 8rem; background-color: none; position: absolute; top:45%; left:33%">0</p>
+	</div>
+	<div id="div3"></div>
+</body>
+<footer>
+	<script type="text/javascript">
+		document.body.addEventListener("keydown", function (event) {
+			var location = window.location.protocol + "//" + window.location.hostname + ":" +window.location.port;
+		    if (event.which === 39) {
+		    	window.location.href = location + '/' + "slide7.html";
+		    }
+		    else if (event.which === 37) {
+		    	window.location.href = location + '/' + "slide5.html";
+		    }
+		});
+	</script>
+	<script type="text/javascript" src="myfile.js"></script>
+</footer>
+</html>

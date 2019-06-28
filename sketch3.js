@@ -2,7 +2,7 @@ let mic;
 let vol = 0;
 function setup() {
 	createCanvas(window.innerWidth, window.innerHeight);
-	pixelDensity(1);
+	pixelDensity(0.5);
 	loadPixels();
 }
 

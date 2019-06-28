@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SCREEN1.7</title>
+	<style type="text/css">
+		body {
+			margin: 0 0;
+			overflow-y: hidden;
+			overflow-x: hidden;
+			text-align: center;
+			color: white;
+			background-color: black;
+		}
+
+		#div1 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: red;
+			width: 66.66%;
+			height: 100vh;
+			float: left;
+			display: inline;
+		}
+		
+		#div3 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: blue;
+			width: 33.33%;
+			height: 100vh;
+			float: left;
+			display: inline;
+		}	
+	
+		canvas {
+			display: inline;
+		}
+	</style>
+
+	<script type="text/javascript" src="libraries/p5.js"></script>
+	<script type="text/javascript" src="libraries/p5.dom.js"></script>
+	<script type="text/javascript" src="libraries/p5.sound.js"></script>
+
+</head>
+<body>
+	<div id="div3"></div>	
+	<div id="div1">
+		<video width="50%" autoplay loop style="float: left">
+	  		<source src="res/multiple_screens.mov" type="video/mp4">
+	  		Your browser does not support HTML5 video.
+		</video>
+		<video width="50%" autoplay loop style="float: left">
+	  		<source src="res/multiple_screens.mov" type="video/mp4">
+	  		Your browser does not support HTML5 video.
+		</video>
+	</div>	
+</body>
+<footer>
+	<script type="text/javascript">
+		document.body.addEventListener("keydown", function (event) {
+			var location = window.location.protocol + "//" + window.location.hostname + ":" +window.location.port;
+		    if (event.which === 39) {
+		    	window.location.href = location + '/' + "slide8.html";
+		    }
+		    else if (event.which === 37) {
+		    	window.location.href = location + '/' + "slide6.html";
+		    }
+		});
+	</script>
+	<script type="text/javascript" src="sketch7.js"></script>
+</footer>
+</html>
