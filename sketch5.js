@@ -9,7 +9,6 @@ function setup() {
 function draw() {
 	getAudioContext().resume();
 	vol = 1 - (mic.getLevel()*15);
-	console.log(vol);
 	if (vol < 0.1) {
 		pixelDensity(0.05);
 	}

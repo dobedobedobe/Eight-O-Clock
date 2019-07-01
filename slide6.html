@@ -30,7 +30,7 @@
 			padding: 0 0;
 			text-align: center;
 			color: white;
-			background-color: blue;
+			background-color: black;
 			width: 33.33%;
 			height: 100vh;
 			float: left;
@@ -40,6 +40,10 @@
 		canvas {
 			display: inline;
 		}
+		@font-face {
+		    font-family: 'SFCompact';
+		    src: url('myfont.otf');
+		}
 	</style>
 	<script type="text/javascript" src="libraries/p5.js"></script>
 	<script type="text/javascript" src="libraries/p5.dom.js"></script>
@@ -48,7 +52,7 @@
 </head>
 <body>
 	<div id="div1">
-		<p id="score" style="margin: 0; padding: 0; ;z-index: 20; color: white; font-size: 8rem; background-color: none; position: absolute; top:45%; left:33%">0</p>
+		<p id="score" style="margin: 0; padding: 0; ;z-index: 20; color: white; font-size: 8rem; background-color: none; position: absolute; top:45%; left:33%; font-family: 'SFCompact'"></p>
 	</div>
 	<div id="div3"></div>
 </body>
@@ -64,6 +68,6 @@
 		    }
 		});
 	</script>
-	<script type="text/javascript" src="myfile.js"></script>
+	<script type="text/javascript" src="sketch6.js"></script>
 </footer>
 </html>

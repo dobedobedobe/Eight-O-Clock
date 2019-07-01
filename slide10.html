@@ -10,10 +10,59 @@
 			color: white;
 			background-color: black;
 		}
+
+		#div1 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: black;
+			width: 33.33%;
+			height: 100vh;
+			float: left;
+			display: inline;
+		}
+		#div2 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: black;
+			width: 33.33%;
+			height: 100vh;
+			line-height: 100vh;
+			float: left;
+			display: inline;
+		}
+		#div3 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: black;
+			width: 33.33%;
+			height: 100vh;
+			float: left;
+			display: inline;
+		}
 	</style>
 </head>
 <body>
-	<h1>Audience</h1>
+	<div id="div1">
+		<video id="video1" width="100%" autoplay loop style="float: left">
+  			<!-- <source src="res/multiple_screens.mov" type="video/mp4"> -->
+  			Your browser does not support HTML5 video.
+		</video>
+	</div>
+	<div id="div2">
+		<p id="question"></p>
+	</div>
+	<div id="div3">
+		<video id="video2" width="100%" autoplay loop style="float: left">
+  			<source src="res/multiple_screens.mov" type="video/mp4">
+  			Your browser does not support HTML5 video.
+		</video>
+	</div>
 </body>
 <footer>
 	<script type="text/javascript">
@@ -27,5 +76,6 @@
 		    }
 		});
 	</script>
+	<script type="text/javascript" src="sketch10.js"></script>
 </footer>
 </html>

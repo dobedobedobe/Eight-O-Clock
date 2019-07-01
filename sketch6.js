@@ -3,100 +3,144 @@ let sketch = function(p) {
 	let mic;
 	let vol = 0;
 	p.setup = function() {
-		createCanvas(window.innerWidth/3, window.innerHeight);
+		p.createCanvas(window.innerWidth/3, window.innerHeight);
 		mic = new p5.AudioIn();
 		mic.start();
 	}
 
 	p.draw = function() {
-		getAudioContext().resume();
+		p.getAudioContext().resume();
 		vol = 1 - (mic.getLevel()*15);
-		console.log(vol);
 		if (vol < 0.1) {
-			pixelDensity(0.05);
+			p.pixelDensity(0.05);
 		}
 		else {
-			pixelDensity(vol);
+			p.pixelDensity(vol);
 		}
-		loadPixels();
-		for (var y = 0; y < height; y++) {
-			for (var x = 0; x < width; x++) {
-				var index = (x + y * width) * 4;
-				var r = random(255);
-				pixels[index + 0] = r;
-				pixels[index + 1] = r;
-				pixels[index + 2] = r;
-				pixels[index + 3] = 255;
+		p.loadPixels();
+		for (var y = 0; y < p.height; y++) {
+			for (var x = 0; x < p.width; x++) {
+				var index = (x + y * p.width) * 4;
+				var r = p.random(255);
+				p.pixels[index + 0] = r;
+				p.pixels[index + 1] = r;
+				p.pixels[index + 2] = r;
+				p.pixels[index + 3] = 255;
 			}
 		}
-		updatePixels();
+		p.updatePixels();
 	}
 }
 
-// let vid;
-// let poses = [];
-// let poseNet;
-// let maxPoseDetections = 8;
-// let outputStride = 16;
-// let helFont;
-// let instruct = ['OBEY', 'CONSUME', 'SUBMIT', 'CONFORM', 'NO THOUGHT', 'WORK', 'SLEEP'];
-// let current = 0;
-// let final = 0;
-// let score = 0;
 
-// function preload() {
-//     helFont = loadFont('SFCompactDisplay-Black.otf');
-// }
+let startPlay = false;
+let resetScreen = false;
+let sketch2 = function(p) {
 
-// function setup() {
-//     createCanvas(innerWidth*2/3, innerHeight);
-//     vid = createCapture(VIDEO);
+	let vid;
+	let poses = [];
+	let poseNet;
+	let helFont;
+	let current = 0;
+	let final = 0;
+	let score = 0;
+	let iterations = 0;
+	let size = 20;
+	p.preload = function() {
+	    helFont = p.loadFont('SFCompactDisplay-Black.otf');
+	}
 
-//     //  vid = createVideo('IMG_8616_small.mov');
-//     vid.hide();
-//     poseNet = ml5.poseNet(vid, modelLoaded);
-//     poseNet.on('pose', function (results) {
-//         poses = results;
-//     });
-//     //    instruct = 
-// }
-// // When the model is loaded
-// function modelLoaded() {
-//     console.log('Model Loaded!');
-// }
+	p.setup = function() {
+	    p.createCanvas(innerWidth*2/3, innerHeight);
+	    vid = p.createCapture(p.VIDEO);
+	    vid.hide();
+	    vid.size(innerWidth*2/3, innerHeight);
+	    poseNet = ml5.poseNet(vid, p.modelLoaded);
+	    poseNet.on('pose', function (results) {
+	        poses = results;
+	    });
+	    //    instruct = 
+	}
+	// When the model is loaded
+	p.modelLoaded = function() {
+	    console.log('Model Loaded!');
+	}
 
-// // Listen to new 'pose' events
-// function mousePressed() {
-//     vid.loop(); // set the video to loop and start playing
-// }
+	// Listen to new 'pose' events
+	p.mousePressed = function() {
+	    vid.loop(); // set the video to loop and start playing
+	}
 
-// function draw() {
-//     background(50);
-//     image(vid, 0, 0);
-//     filter(GRAY);
-//     drawKeypoints();
-// }
+	p.draw = function() {
+	    p.background(50);
+	    p.image(vid, 0, 0, innerWidth*2/3, innerHeight);
+	    p.filter(p.GRAY);
+	    if (score > 2) {
+	    	document.getElementById("score").innerHTML = "";
+    		iterations++;
+    		console.log(iterations);
+    		if (resetScreen) {
+    			score = 0;
+    			iterations = 0;
+    			size = 20;
+    			resetScreen = false;
+    		}
+    		if (iterations < 3) {
+    			p.background('red');
+    		}
+    		else if (iterations < 6) {
+    			p.background('white');
+    		}
+    		else {
+    			iterations = 0;
+    			p.background('white');
+    		}
+	    }
+	    else {
+	    	p.drawKeypoints();
+		}
+	}
 
-// function drawKeypoints() {
-//     current = final;
-//     final = 0;
-//     for (let i = 0; i < poses.length; i++) {
+	p.drawKeypoints = function() {
+	    current = final;
+	    final = 0;
+	    for (let i = 0; i < poses.length; i++) {
 
-//         let pr = poses[i].pose.keypoints[0];
-//         final += pr.position.x/poses.length;
-// //        let pl = poses[i].pose.keypoints[2];
-// //        console.log(poses);
-//         if (poses[i].pose.score > 0.20) {
-//             fill(255);
-//             noStroke();
-//             ellipse(pr.position.x, pr.position.y, 10);
-//         }
-        
-//     }
-//     if (final - current > 10 && current != 0) {
-//         score += 6.5;
-//         console.log(score);
-//     } 
-// }
+	        let pr = poses[i].pose.keypoints[0];
+	        final += pr.position.x;
+	        if (poses[i].pose.score > 0.20) {
+	            p.fill(255, 0, 0, 180);
+	            p.noStroke();
+	            p.ellipse(pr.position.x, pr.position.y, size);
+	        }
+	    }
+	    if (startPlay) {
+			if (final - current > 2 && current != 0) {
+		        score += 1;
+		        size += 7;
+		        // console.log(score);
+		    }
+		    if (score <= 100) {
+		    	document.getElementById("score").innerHTML = score;
+		    }
+	    }
+	    else {
+	    	document.getElementById("score").innerHTML = "";
+	    	score = 0;
 
-new p5(sketch, 'div2');
+	    }
+	}
+}
+new p5(sketch, document.getElementById("div3"));
+new p5(sketch2, document.getElementById("div1"));
+
+document.body.addEventListener("keydown", function (event) {
+    if (event.key === 'p') {
+    	startPlay = !(startPlay);
+    	console.log(startPlay);
+    }
+    else if (event.key === 'r') {
+    	console.log("r is pressed");
+    	resetScreen = true;
+    }
+});
