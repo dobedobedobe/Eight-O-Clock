@@ -73,7 +73,7 @@ let sketch2 = function(p) {
 
 	p.draw = function() {
 	    p.background(50);
-	    p.image(vid, 0, 0, innerWidth*2/3, innerHeight);
+	    p.image(vid, 0, 0, innerWidth/3, innerHeight);
 	    p.filter(p.GRAY);
 	    if (score > 2) {
 	    	document.getElementById("score").innerHTML = "";

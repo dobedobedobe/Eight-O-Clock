@@ -17,18 +17,18 @@ function previousQuestion() {
 }
 
 document.body.addEventListener("keypress", function (event) {
-    if (event.key === 'n') {
-    	nextQuestion();
-    }
-    else if (event.key === 'p') {
-    	previousQuestion();
-    }
+		if (event.key === 'n') {
+			nextQuestion();
+		}
+		else if (event.key === 'p') {
+			previousQuestion();
+		}
 });
 
 /*Code To check whether getUser Media is working on your current Browser*/
 // function hasGetUserMedia() {
-//   return !!(navigator.mediaDevices &&
-//     navigator.mediaDevices.getUserMedia);
+//	 return !!(navigator.mediaDevices &&
+//		 navigator.mediaDevices.getUserMedia);
 // }
 
 // if (hasGetUserMedia()) {
@@ -37,11 +37,40 @@ document.body.addEventListener("keypress", function (event) {
 // 	alert('getUserMedia() is not supported by your browser');
 // }
 
-const constraints = {
-  video: true
-};
+// const constraints1 = {
+// 	video: true
+// };
 
 const video1 = document.getElementById("video1");
 const video2 = document.getElementById("video2");
-navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video1.srcObject = stream});
-navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video2.srcObject = stream});
+navigator.mediaDevices.enumerateDevices().then(gotDevices).then(streamCameras);
+
+videolist = []
+function gotDevices(deviceInfos) {
+	for (let i = 0; i !== deviceInfos.length; ++i) {
+		const deviceInfo = deviceInfos[i];
+		const option = document.createElement('option');
+		option.value = deviceInfo.deviceId; 
+		if (deviceInfo.kind === 'videoinput') {
+			videolist.push(deviceInfo);
+			// console.log(deviceInfo);
+		}
+	}
+}
+
+function streamCameras() {
+	for (var i = 0; i < 2; i++) {
+		console.log(videolist[i]);
+		const constraints = {
+			video: {
+				deviceId: {exact: videolist[i].deviceId}
+			}
+		}
+		if (i == 0) {
+			navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video1.srcObject = stream});
+		}
+		else {
+			navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video2.srcObject = stream});
+		}
+	}
+}

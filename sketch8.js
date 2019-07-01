@@ -24,7 +24,7 @@
 
 let video;
 function setup() {
-    createCanvas(window.innerWidth*1/2, window.innerHeight);
+    createCanvas(window.innerWidth/2, window.innerHeight);
     video = createCapture(VIDEO);
     video.hide();
 }
@@ -33,8 +33,8 @@ function draw()  {
     background(50);
     tint(255, 150);
     imageMode(CENTER);
-    var aspectRatio = (window.innerWidth*1/2)/window.innerHeight;
-    for (let i = window.innerHeight; i > 40; i -= 80) {
+    var aspectRatio = (window.innerWidth/3)/window.innerHeight;
+    for (let i = window.innerHeight; i > 100; i -= 120) {
         let x = width/2 + noise(i * frameCount*12);
         let y = height / 2 + noise(i * frameCount*2);
         image(video, x, y, i*aspectRatio, i)
