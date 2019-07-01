@@ -51,10 +51,10 @@ let sketch2 = function(p) {
 	}
 
 	p.setup = function() {
-	    p.createCanvas(innerWidth*2/3, innerHeight);
+	    p.createCanvas(innerWidth/3, innerHeight);
 	    vid = p.createCapture(p.VIDEO);
 	    vid.hide();
-	    vid.size(innerWidth*2/3, innerHeight);
+	    vid.size(innerWidth/3, innerHeight);
 	    poseNet = ml5.poseNet(vid, p.modelLoaded);
 	    poseNet.on('pose', function (results) {
 	        poses = results;
