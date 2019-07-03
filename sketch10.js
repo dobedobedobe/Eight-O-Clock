@@ -1,13 +1,14 @@
-questions = ["Question1", "Question2", "Question3", "Question4", "Question5"];
-
-questions_length = questions.length;
-counter = 0;
-
+var questions = ["Question1", "Question2", "Question3", "Question4", "Question5"];
+var answers = ["Answer1", "Answer2", "Answer3", "Answer4", "Answer5"];
+var questions_length = questions.length;
+var counter = 0;
+var showAnswer_bool = true;
 document.getElementById("question").innerHTML = questions[counter % questions_length];
 
 function nextQuestion() {
 	counter++;
 	document.getElementById("question").innerHTML = questions[counter % questions_length];
+	showAnswer_bool = true;
 }
 
 function previousQuestion() {
@@ -17,6 +18,17 @@ function previousQuestion() {
 	document.getElementById("question").innerHTML = questions[counter % questions_length];
 }
 
+function showAnswer() {
+	if (showAnswer_bool) {
+		document.getElementById("question").innerHTML = questions[counter % questions_length] + "<br><br>" + answers[counter % questions_length];
+		showAnswer_bool = false; 		
+	}
+	else {
+		document.getElementById("question").innerHTML = questions[counter % questions_length];
+		showAnswer_bool = true;
+	}
+}
+
 document.body.addEventListener("keypress", function (event) {
 		if (event.key === 'n') {
 			nextQuestion();
@@ -24,7 +36,12 @@ document.body.addEventListener("keypress", function (event) {
 		else if (event.key === 'p') {
 			previousQuestion();
 		}
+		else if (event.key === 's') {
+			showAnswer();
+			console.log("Show Answer Called");
+		}
 });
+
 
 /*Code To check whether getUser Media is working on your current Browser*/
 // function hasGetUserMedia() {
