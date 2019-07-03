@@ -6,7 +6,7 @@ function setup() {
 	let speechRec = new p5.SpeechRec(lang, gotSpeech);
 
 	let continuous = true;
-	let interim = false;
+	let interim = true;
 
 	speechRec.start(continuous, interim);
 	if (window.hasOwnProperty('webkitSpeechRecognition')) {

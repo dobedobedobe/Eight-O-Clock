@@ -1,30 +1,3 @@
-questions = ["Question1", "Question2", "Question3", "Question4", "Question5"];
-
-questions_length = questions.length;
-counter = 0;
-
-document.getElementById("question").innerHTML = questions[counter % questions_length];
-
-function nextQuestion() {
-	counter++;
-	document.getElementById("question").innerHTML = questions[counter % questions_length];
-}
-
-function previousQuestion() {
-	counter--;
-	if (counter < 0)
-		counter = questions_length - 1;
-	document.getElementById("question").innerHTML = questions[counter % questions_length];
-}
-
-document.body.addEventListener("keypress", function (event) {
-		if (event.key === 'n') {
-			nextQuestion();
-		}
-		else if (event.key === 'p') {
-			previousQuestion();
-		}
-});
 
 /*Code To check whether getUser Media is working on your current Browser*/
 // function hasGetUserMedia() {
@@ -53,12 +26,12 @@ function streamCam() {
 	}
 	navigator.mediaDevices.getUserMedia(constraints1).then((stream) => {video1.srcObject = stream});
 	
-	const constraints2 = {
-		video: {
-			label: {exact: "Logitech Webcam C930e (046d:0843)"}
-		}
-	}
-	navigator.mediaDevices.getUserMedia(constraints2).then((stream) => {video2.srcObject = stream});
+	// const constraints2 = {
+	// 	video: {
+	// 		label: {exact: "Logitech Webcam C930e (046d:0843)"}
+	// 	}
+	// }
+	// navigator.mediaDevices.getUserMedia(constraints2).then((stream) => {video2.srcObject = stream});
 }
 videolist = []
 function gotDevices(deviceInfos) {

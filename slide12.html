@@ -3,17 +3,73 @@
 <head>
 	<meta charset="utf-8">
 	<title>Speech to Text</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 	<style type="text/css">
+		@font-face {
+		    font-family: 'SFCompact';
+		    src: url('myfont.otf');
+		}
+
 		body {
-			margin: 0;
-			padding: 30px;
-			background-color: black;  
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			background-color: black;
+			overflow: hidden;
+		    font-family: 'Montserrat', sans-serif;
+		    font-size: 1.67rem;
+		    font-weight: 20;
+		    /*font-family: 'SFCompact';*/
 		}
+
+		#div1 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			font-size: 2.67rem;
+			line-height: 80vh;
+			background-color: black;
+			width: 33.33%;
+			height: 100vh;
+			float: left;
+			display: inline;
+		}
+		#div2 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			font-size: 2.67rem;
+			background-color: black;
+			width: 33.33%;
+			height: 100vh;
+			float: left;
+			display: inline;
+			line-height: 80vh;
+		}
+		#div3 {
+			margin: 0 0;
+			padding: 0 0;
+			text-align: center;
+			color: white;
+			font-size: 2.67rem;
+			background-color: black;
+			width: 33.33%;
+			float: left;
+			display: inline;
+			line-height: 80vh;
+		}
+
 		p {
-			font-size: 5rem;
-			font-weight: bold;
-			color: yellow;
+			margin-left: 20%;
+			margin-right: 20%;
+			margin-top: 20%;
+			line-height: 2.67rem; 
 		}
+
+
 	</style>
 	<script src="libraries/p5.js"></script>
 	<script src="libraries/p5.dom.js"></script>
@@ -23,9 +79,9 @@
 </head>
 
 <body>
-	<p id="1"></p>
-	<p id="2"></p>
-	<p id="3"></p>
+	<div id="div1"><p id="1"></p></div>
+	<div id="div2"><p id="2"></p></div>
+	<div id="div3"><p id="3"></p></div>
 </body>
 <footer>
 	<script type="text/javascript">
